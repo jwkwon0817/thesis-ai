@@ -4,7 +4,7 @@ An artificial intelligence system that summarizes academic papers and research a
 
 ## Installation
 
-```sh
+```bash
 poetry install --no-root
 ```
 
@@ -12,7 +12,7 @@ poetry install --no-root
 
 ### 1. Copy .env.sample to .env
 
-```sh
+```bash
 cp .env.sample .env
 ```
 
@@ -36,7 +36,7 @@ MODEL_NAME=llama3.3
 
 ## Run
 
-```sh
+```bash
 poetry run python -m app
 ```
 
