@@ -43,3 +43,9 @@ poetry run python -m app
 ## Quit
 
 Say `/bye` or `quit` or `exit`
+
+---
+
+## LICENSE
+
+[MIT](https://github.com/jwkwon0817/thesis-ai/blob/main/LICENSE)
