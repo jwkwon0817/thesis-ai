@@ -2,9 +2,9 @@ import os
 
 from dotenv import load_dotenv
 
-from app import (create_chunks, create_rag_chain,  # load_pdf_docs 추가
-                 get_answer_from_rag, get_or_create_vector_store,
-                 load_pdf_docs, load_pdfs_from_directory, pdf_docs)
+from app import (create_chunks, create_rag_chain, get_answer_from_rag,
+                 get_or_create_vector_store)
+from app.pdf.storage import load_pdf_docs, load_pdfs_from_directory
 
 load_dotenv()
 
@@ -17,9 +17,10 @@ def main():
     asset_directory = './assets'
     persist_directory = get_absolute_path("../databases/chroma")
     base_url = os.getenv('BASE_URL')
+    model_name = os.getenv('MODEL_NAME')
+    embedding_model_name = os.getenv('EMBEDDING_MODEL_name')
 
-    global pdf_docs
-    pdf_docs.update(load_pdf_docs())
+    pdf_docs = load_pdf_docs()
 
     if not base_url:
         print("Error: BASE_URL environment variable not found")
@@ -55,12 +56,12 @@ def main():
         vectordb = get_or_create_vector_store(
             chunks,
             persist_directory=persist_directory,
-            model_name="nomic-embed-text"
+            model_name=embedding_model_name
         )
 
         chain = create_rag_chain(
             vectorstore=vectordb,
-            model_name="exaone3.5:32b",
+            model_name=model_name,
             base_url=base_url
         )
 
@@ -100,6 +101,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
-#In NSCLC, what kind of mutation in EGFR gene were found?
-#The Role of Liquid Biopsy in Early Diagnosis of Lung Cancer.pdf
