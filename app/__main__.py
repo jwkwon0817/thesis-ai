@@ -18,7 +18,7 @@ def main():
     persist_directory = get_absolute_path("../databases/chroma")
     base_url = os.getenv('BASE_URL')
     model_name = os.getenv('MODEL_NAME')
-    embedding_model_name = os.getenv('EMBEDDING_MODEL_name')
+    embedding_model_name = os.getenv('EMBEDDING_MODEL_NAME')
 
     pdf_docs = load_pdf_docs()
 
