@@ -30,7 +30,7 @@ def main():
     if not os.path.exists(persist_directory):
         print("\nLoading documents...")
         try:
-            documents = load_pdfs_from_directory(asset_directory)
+            documents = load_pdfs_from_directory(asset_directory, pdf_docs)
             print(f"\nTotal documents loaded: {len(documents)}")
             print("\nLoaded PDF docs:")
             for filename, doc in pdf_docs.items():
